@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รสชาติไทย</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+body {
+  background: #faf6f2;
+  color: #4b2e1f;
+  line-height: 1.6;
+}
+
+/* HEADER */
+header {
+  background: #fff;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #b36a2e;
+}
+
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #5a3a24;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #b36a2e;
+}
+
+/* HERO */
+.hero {
+  height: 420px;
+  background:
+    linear-gradient(to right, rgba(0,0,0,.55), rgba(0,0,0,.1)),
+    url("https://images.unsplash.com/photo-1604909053191-82e2f0ddc6ad");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 0 80px;
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.hero button {
+  padding: 12px 26px;
+  background: #b36a2e;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hero button:hover {
+  background: #8d4f22;
+}
+
+/* MAIN */
+.container {
+  max-width: 1200px;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 40px;
+}
+
+/* ARTICLES */
+.section-title {
+  grid-column: 1 / -1;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card .content {
+  padding: 20px;
+}
+
+.tag {
+  display: inline-block;
+  background: #b36a2e;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.card p {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.card a {
+  text-decoration: none;
+  color: #b36a2e;
+  font-weight: 600;
+}
+
+/* SIDEBAR */
+.sidebar .box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+}
+
+.sidebar h4 {
+  margin-bottom: 15px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin-bottom: 8px;
+}
+
+/* NEWSLETTER */
+.newsletter {
+  max-width: 1200px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+}
+
+.newsletter input {
+  padding: 12px;
+  width: 260px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.newsletter button {
+  padding: 12px 26px;
+  margin-left: 10px;
+  border: none;
+  background: #b36a2e;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #777;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🍲 รสชาติไทย</div>
+  <nav>
+    <a href="#">หน้าแรก</a>
+    <a href="#">เกี่ยวกับฉัน</a>
+    <a href="#">สูตรอาหาร</a>
+    <a href="#">วัตถุดิบไทย</a>
+    <a href="#">ติดต่อเรา</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>ค้นพบรสชาติไทยแท้</h1>
+    <p>ต้นตำรับสูตรอาหารไทย จากครัวบ้านสู่จานคุณ</p>
+    <button>ดูสูตรอาหาร</button>
+  </div>
+</section>
+
+<main class="container">
+
+  <h2 class="section-title">สูตรอาหารแนะนำ</h2>
+
+  <section class="posts">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1604909053191-82e2f0ddc6ad">
+      <div class="content">
+        <span class="tag">ผัดไทย</span>
+        <h3>ผัดไทยกุ้งสด</h3>
+        <p>สูตรผัดไทยรสกลมกล่อม หอมซอสเข้มข้น</p>
+        <a href="#">สูตรอาหาร →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f">
+      <div class="content">
+        <span class="tag">แกง</span>
+        <h3>แกงเขียวหวานไก่</h3>
+        <p>เข้มข้นด้วยกะทิสดและเครื่องแกงแท้</p>
+        <a href="#">สูตรอาหาร →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b">
+      <div class="content">
+        <span class="tag">ขนม</span>
+        <h3>ข้าวเหนียวมะม่วง</h3>
+        <p>หวานมัน หอมกะทิ สไตล์ไทยแท้</p>
+        <a href="#">สูตรอาหาร →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1604908177522-0408a9f4b61b">
+      <div class="content">
+        <span class="tag">ต้มยำ</span>
+        <h3>ต้มยำกุ้ง</h3>
+        <p>เผ็ด เปรี้ยว หอมสมุนไพรไทย</p>
+        <a href="#">สูตรอาหาร →</a>
+      </div>
+    </div>
+  </section>
+
+  <aside class="sidebar">
+    <div class="box">
+      <h4>เกี่ยวกับฉัน</h4>
+      <p>หลงใหลอาหารไทย และแบ่งปันสูตรจากครัวบ้าน</p>
+    </div>
+
+    <div class="box">
+      <h4>หมวดหมู่</h4>
+      <ul>
+        <li>🍛 แกง</li>
+        <li>🍜 เส้น</li>
+        <li>🍤 อาหารทะเล</li>
+        <li>🍰 ขนมหวาน</li>
+      </ul>
+    </div>
+  </aside>
+
+</main>
+
+<section class="newsletter">
+  <h3>สมัครรับข่าวสาร</h3><br>
+  <input type="email" placeholder="Email address">
+  <button>สมัคร</button>
+</section>
+
+<footer>
+  © 2024 รสชาติไทย · อาหารไทยแท้
+</footer>
+
+</body>
+</html>
