@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Cờ Tướng</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f0d8;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .board {
+    display: grid;
+    grid-template-columns: repeat(9, 60px);
+    grid-template-rows: repeat(10, 60px);
+    border: 3px solid #444;
+    background: #e6c88f;
+  }
+
+  .cell {
+    border: 1px solid #444;
+    position: relative;
+  }
+
+  .river {
+    background: #d9b97a;
+  }
+
+  .piece {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #eee;
+    border: 2px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+  }
+
+  .red {
+    color: darkred;
+    border-color: darkred;
+  }
+
+  .black {
+    color: black;
+  }
+
+  .selected {
+    background: gold;
+  }
+
+  .move {
+    background: rgba(0, 150, 0, 0.4);
+  }
+</style>
+</head>
+<body>
+
+<div class="board" id="board"></div>
+
+<script>
+const board = document.getElementById("board");
+let selectedPiece = null;
+let selectedPos = null;
+
+const pieces = [
+  {x:0,y:0,t:"車",c:"black"}, {x:8,y:0,t:"車",c:"black"},
+  {x:1,y:0,t:"馬",c:"black"}, {x:7,y:0,t:"馬",c:"black"},
+  {x:4,y:0,t:"將",c:"black"},
+  {x:1,y:2,t:"炮",c:"black"}, {x:7,y:2,t:"炮",c:"black"},
+  {x:0,y:3,t:"卒",c:"black"}, {x:2,y:3,t:"卒",c:"black"},
+  {x:4,y:3,t:"卒",c:"black"}, {x:6,y:3,t:"卒",c:"black"},
+  {x:8,y:3,t:"卒",c:"black"},
+
+  {x:0,y:9,t:"車",c:"red"}, {x:8,y:9,t:"車",c:"red"},
+  {x:1,y:9,t:"馬",c:"red"}, {x:7,y:9,t:"馬",c:"red"},
+  {x:4,y:9,t:"帥",c:"red"},
+  {x:1,y:7,t:"炮",c:"red"}, {x:7,y:7,t:"炮",c:"red"},
+  {x:0,y:6,t:"兵",c:"red"}, {x:2,y:6,t:"兵",c:"red"},
+  {x:4,y:6,t:"兵",c:"red"}, {x:6,y:6,t:"兵",c:"red"},
+  {x:8,y:6,t:"兵",c:"red"}
+];
+
+function drawBoard() {
+  board.innerHTML = "";
+  for (let y=0; y<10; y++) {
+    for (let x=0; x<9; x++) {
+      const cell = document.createElement("div");
+      cell.className = "cell";
+      cell.dataset.x = x;
+      cell.dataset.y = y;
+      board.appendChild(cell);
+    }
+  }
+
+  pieces.forEach(p => {
+    const cell = document.querySelector(`.cell[data-x='${p.x}'][data-y='${p.y}']`);
+    const piece = document.createElement("div");
+    piece.className = `piece ${p.c}`;
+    piece.innerText = p.t;
+    piece.onclick = () => selectPiece(p, cell);
+    cell.appendChild(piece);
+  });
+}
+
+function clearHighlights() {
+  document.querySelectorAll(".cell").forEach(c => c.classList.remove("move"));
+  document.querySelectorAll(".piece").forEach(p => p.classList.remove("selected"));
+}
+
+function selectPiece(piece, cell) {
+  clearHighlights();
+  selectedPiece = piece;
+  selectedPos = {x: piece.x, y: piece.y};
+  cell.firstChild.classList.add("selected");
+  showMoves(piece);
+}
+
+function showMoves(piece) {
+  let moves = [];
+
+  if (piece.t === "車") {
+    for (let i=0;i<9;i++) moves.push({x:i,y:piece.y});
+    for (let i=0;i<10;i++) moves.push({x:piece.x,y:i});
+  }
+
+  if (piece.t === "馬") {
+    const d = [
+      [1,2],[2,1],[-1,2],[-2,1],
+      [1,-2],[2,-1],[-1,-2],[-2,-1]
+    ];
+    d.forEach(m => moves.push({x:piece.x+m[0], y:piece.y+m[1]}));
+  }
+
+  if (piece.t === "兵" || piece.t === "卒") {
+    const dir = piece.c === "red" ? -1 : 1;
+    moves.push({x:piece.x, y:piece.y+dir});
+  }
+
+  if (piece.t === "炮") {
+    for (let i=0;i<9;i++) moves.push({x:i,y:piece.y});
+    for (let i=0;i<10;i++) moves.push({x:piece.x,y:i});
+  }
+
+  moves.forEach(m => {
+    if (m.x>=0 && m.x<9 && m.y>=0 && m.y<10) {
+      const cell = document.querySelector(`.cell[data-x='${m.x}'][data-y='${m.y}']`);
+      if (cell) cell.classList.add("move");
+    }
+  });
+}
+
+drawBoard();
+</script>
+
+</body>
+</html>
