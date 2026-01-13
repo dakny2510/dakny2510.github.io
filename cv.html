@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal CV Blog</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+    }
+
+    /* HEADER */
+    .header {
+        background: #394874;
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid white;
+    }
+
+    .subtitle {
+        font-size: 18px;
+        margin-top: 5px;
+        opacity: .9;
+    }
+
+    .contact span {
+        margin: 0 10px;
+        display: inline-block;
+        font-size: 14px;
+    }
+
+    /* LAYOUT */
+    .container {
+        width: 60%;
+        padding: 30px;
+        float: left;
+    }
+
+    .sidebar {
+        width: 30%;
+        padding: 30px;
+        float: right;
+        background: #ffffff;
+        min-height: 100vh;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        color: #333;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 5px;
+    }
+
+    .time {
+        font-size: 13px;
+        color: #666;
+        margin-top: -5px;
+    }
+
+    /* SKILLS BAR */
+    .skill {
+        margin-bottom: 15px;
+    }
+
+    .bar {
+        background: #ddd;
+        height: 8px;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+
+    .bar div {
+        height: 8px;
+        background: #526bb2;
+        border-radius: 5px;
+    }
+
+    /* TAGS */
+    .tags span {
+        background: #e0e6f7;
+        padding: 5px 10px;
+        display: inline-block;
+        margin: 5px;
+        border-radius: 6px;
+    }
+
+    /* CIRCLES */
+    .circles {
+        display: flex;
+        gap: 10px;
+    }
+
+    .circle {
+        width: 80px;
+        height: 80px;
+        border: 3px solid #526bb2;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 12px;
+        padding: 5px;
+    }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <img src="https://i.imgur.com/qf6C7vN.png" class="avatar" alt="avatar">
+    <h1>ISABELLA CLARK</h1>
+    <p class="subtitle">Senior Blogger</p>
+
+    <div class="contact">
+        <span>📧 support@qwikresume.com</span>
+        <span>📞 (123) 456 7899</span>
+        <span>📍 Los Angeles</span>
+        <span>🌐 www.qwikresume.com</span>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+    <section>
+        <h2>Professional Summary</h2>
+        <p>
+            Dynamic blogger with over 7 years of experience in creating impactful content that engages diverse audiences.
+            Adept at leveraging SEO strategies and analytics to enhance visibility and drive traffic.
+        </p>
+    </section>
+
+    <section>
+        <h2>Work Experience</h2>
+
+        <h3>Senior Blogger — Quantum Solutions LLC</h3>
+        <p class="time">May 2020 – Ongoing | Phoenix, AZ</p>
+        <ul>
+            <li>Developed and managed a personal blog focused on music reviews.</li>
+            <li>Crafted narratives that resonate with audiences.</li>
+            <li>Contributed to thought leadership platforms.</li>
+        </ul>
+
+        <h3>Blogger — Summit Peak Industries</h3>
+        <p class="time">May 2018 – May 2020 | Denver, CO</p>
+        <ul>
+            <li>Grew a global readership with high engagement.</li>
+            <li>Utilized blogging tools and SEO optimization.</li>
+            <li>Maintained cohesive visual branding.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <h3>Bachelor of Arts in English</h3>
+        <p class="time">2016 – 2018 | University of California, Berkeley</p>
+        <p>Specialized in English literature and creative writing.</p>
+    </section>
+
+</div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+    <h2>Skills</h2>
+    <div class="skill"><span>Monetization Strategies</span><div class="bar"><div style="width:100%"></div></div></div>
+    <div class="skill"><span>Digital Marketing</span><div class="bar"><div style="width:70%"></div></div></div>
+    <div class="skill"><span>Networking Skills</span><div class="bar"><div style="width:75%"></div></div></div>
+    <div class="skill"><span>Creative Writing</span><div class="bar"><div style="width:90%"></div></div></div>
+
+    <h2>Interests</h2>
+    <ul>
+        <li>Art</li>
+        <li>Hiking</li>
+        <li>Volunteering</li>
+        <li>Yoga</li>
+    </ul>
+
+    <h2>Strengths</h2>
+    <div class="tags">
+        <span>Critically</span>
+        <span>Detail-oriented</span>
+        <span>Diplomacy</span>
+        <span>Enthusiasm</span>
+    </div>
+
+    <h2>Languages</h2>
+    <div class="circles">
+        <div class="circle">English<br>80%</div>
+        <div class="circle">Dutch<br>80%</div>
+        <div class="circle">Russian<br>80%</div>
+    </div>
+
+</aside>
+
+</body>
+</html>
