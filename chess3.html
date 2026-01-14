@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<title>Chess Board</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    font-family: Arial, sans-serif;
+  }
+
+  .board {
+    display: grid;
+    grid-template-columns: repeat(8, 60px);
+    grid-template-rows: repeat(8, 60px);
+    border: 3px solid #333;
+  }
+
+  .square {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    cursor: pointer;
+  }
+
+  .white {
+    background: #f0d9b5;
+  }
+
+  .black {
+    background: #b58863;
+  }
+
+  .selected {
+    outline: 3px solid red;
+  }
+
+  .move {
+    background: radial-gradient(circle, rgba(0,0,0,0.4) 20%, transparent 22%);
+  }
+</style>
+</head>
+<body>
+
+<div class="board" id="board"></div>
+
+<script>
+const boardEl = document.getElementById("board");
+
+const pieces = {
+  r: "♜", n: "♞", b: "♝", q: "♛", k: "♚", p: "♟",
+  R: "♖", N: "♘", B: "♗", Q: "♕", K: "♔", P: "♙"
+};
+
+const boardState = [
+  "rnbqkbnr",
+  "pppppppp",
+  "........",
+  "........",
+  "........",
+  "........",
+  "PPPPPPPP",
+  "RNBQKBNR"
+];
+
+let selected = null;
+
+function drawBoard() {
+  boardEl.innerHTML = "";
+  for (let r = 0; r < 8; r++) {
+    for (let c = 0; c < 8; c++) {
+      const sq = document.createElement("div");
+      sq.className = "square " + ((r + c) % 2 ? "black" : "white");
+      sq.dataset.r = r;
+      sq.dataset.c = c;
+
+      const piece = boardState[r][c];
+      if (piece !== ".") sq.textContent = pieces[piece];
+
+      sq.onclick = () => handleClick(r, c);
+      boardEl.appendChild(sq);
+    }
+  }
+}
+
+function handleClick(r, c) {
+  clearHighlights();
+  const piece = boardState[r][c];
+  if (piece === ".") return;
+
+  selected = { r, c, piece };
+  getSquare(r, c).classList.add("selected");
+
+  const moves = getMoves(r, c, piece);
+  moves.forEach(m => getSquare(m.r, m.c).classList.add("move"));
+}
+
+function getMoves(r, c, piece) {
+  const moves = [];
+  const isWhite = piece === piece.toUpperCase();
+
+  const dirs = {
+    rook: [[1,0],[-1,0],[0,1],[0,-1]],
+    bishop: [[1,1],[1,-1],[-1,1],[-1,-1]],
+    knight: [[2,1],[2,-1],[-2,1],[-2,-1],[1,2],[1,-2],[-1,2],[-1,-2]]
+  };
+
+  function slide(directions) {
+    directions.forEach(([dr, dc]) => {
+      let nr = r + dr, nc = c + dc;
+      while (nr >= 0 && nr < 8 && nc >= 0 && nc < 8) {
+        if (boardState[nr][nc] === ".") {
+          moves.push({ r: nr, c: nc });
+        } else {
+          if (isWhite !== (boardState[nr][nc] === boardState[nr][nc].toUpperCase()))
+            moves.push({ r: nr, c: nc });
+          break;
+        }
+        nr += dr;
+        nc += dc;
+      }
+    });
+  }
+
+  switch (piece.toLowerCase()) {
+    case "p":
+      const dir = isWhite ? -1 : 1;
+      if (boardState[r + dir]?.[c] === ".")
+        moves.push({ r: r + dir, c });
+      break;
+
+    case "r": slide(dirs.rook); break;
+    case "b": slide(dirs.bishop); break;
+    case "q": slide([...dirs.rook, ...dirs.bishop]); break;
+
+    case "n":
+      dirs.knight.forEach(([dr, dc]) => {
+        const nr = r + dr, nc = c + dc;
+        if (nr >= 0 && nr < 8 && nc >= 0 && nc < 8) {
+          if (boardState[nr][nc] === "." ||
+              isWhite !== (boardState[nr][nc] === boardState[nr][nc].toUpperCase()))
+            moves.push({ r: nr, c: nc });
+        }
+      });
+      break;
+
+    case "k":
+      for (let dr = -1; dr <= 1; dr++)
+        for (let dc = -1; dc <= 1; dc++) {
+          if (dr === 0 && dc === 0) continue;
+          const nr = r + dr, nc = c + dc;
+          if (nr >= 0 && nr < 8 && nc >= 0 && nc < 8)
+            moves.push({ r: nr, c: nc });
+        }
+      break;
+  }
+
+  return moves;
+}
+
+function clearHighlights() {
+  document.querySelectorAll(".square").forEach(s => {
+    s.classList.remove("selected", "move");
+  });
+}
+
+function getSquare(r, c) {
+  return document.querySelector(`[data-r='${r}'][data-c='${c}']`);
+}
+
+drawBoard();
+</script>
+</body>
+</html>
