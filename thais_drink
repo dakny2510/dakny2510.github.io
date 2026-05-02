@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thức uống Thái Lan</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background: #c0392b;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        nav {
+            background: #e67e22;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            display: flex;
+        }
+        article {
+            flex: 3;
+            padding: 20px;
+        }
+        aside {
+            flex: 1;
+            background: #fdf2e9;
+            padding: 20px;
+        }
+        footer {
+            background: #c0392b;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Khám phá thức uống Thái Lan 🇹🇭</h1>
+</header>
+
+<nav>
+    <a href="#">Trang chủ</a>
+    <a href="#">Đồ uống</a>
+    <a href="#">Văn hoá</a>
+    <a href="#">Liên hệ</a>
+</nav>
+
+<main>
+    <article>
+        <h2>Những thức uống nổi bật</h2>
+
+        <h3>1. Trà sữa Thái (Cha Yen)</h3>
+        <p>
+            Đây là loại trà nổi tiếng với màu cam đặc trưng, vị ngọt béo từ sữa đặc và hương trà đậm đà.
+        </p>
+
+        <h3>2. Trà xanh sữa Thái</h3>
+        <p>
+            Phiên bản nhẹ hơn với màu xanh, mang hương vị thanh mát và dễ uống hơn so với trà đỏ.
+        </p>
+
+        <h3>3. Nước dừa tươi</h3>
+        <p>
+            Ở Thái Lan, nước dừa rất phổ biến, được bán khắp nơi và giúp giải nhiệt cực tốt.
+        </p>
+
+        <h3>4. Nom Yen (sữa hồng)</h3>
+        <p>
+            Một loại đồ uống màu hồng rất bắt mắt, có vị ngọt và thường được giới trẻ yêu thích.
+        </p>
+    </article>
+
+    <aside>
+        <h3>Thông tin thú vị</h3>
+        <p>
+            Thức uống Thái thường có vị ngọt đậm và dùng nhiều đá để làm mát trong khí hậu nóng.
+        </p>
+
+        <h3>Gợi ý</h3>
+        <ul>
+            <li>Thử uống ít đường nếu không quen ngọt</li>
+            <li>Uống cùng đá để đúng vị Thái</li>
+        </ul>
+    </aside>
+</main>
+
+<footer>
+    <p>© 2026 - Khám phá ẩm thực Thái Lan</p>
+</footer>
+
+</body>
+</html>
